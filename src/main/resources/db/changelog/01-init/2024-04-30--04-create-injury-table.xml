@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+  <changeSet author="coungard" id="2024-04-30--06-create-injury-table">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="injury"/>
+      </not>
+    </preConditions>
+    <sql>
+      CREATE TABLE injury
+      (
+        id        BIGSERIAL PRIMARY KEY,
+        game_id   INTEGER REFERENCES game (id),
+        player_id INTEGER REFERENCES player (id),
+        type      VARCHAR(60),
+        reason    TEXT
+      )
+    </sql>
+  </changeSet>
+
+</databaseChangeLog>
