@@ -1,10 +1,14 @@
 package org.coungard.dagdiezel.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.Date;
 import lombok.Data;
+import org.coungard.dagdiezel.model.Leg;
 
 @Data
 @Entity
@@ -15,4 +19,8 @@ public class Player {
   private Long id;
 
   private String name;
+  private Date birthday;
+  private String position;
+  @Enumerated(EnumType.STRING)
+  private Leg leg;
 }

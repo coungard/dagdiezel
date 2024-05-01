@@ -7,8 +7,7 @@
 
   <include file="2024-04-30--01-create-game-table.xml" relativeToChangelogFile="true"/>
   <include file="2024-04-30--02-create-player-table.xml" relativeToChangelogFile="true"/>
-  <include file="2024-04-30--03-create-shirt-table.xml" relativeToChangelogFile="true"/>
-  <include file="2024-04-30--04-create-injury-table.xml" relativeToChangelogFile="true"/>
-  <include file="2024-04-30--05-create-play_statistics-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--03-create-injury-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--04-create-play_statistics-table.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
