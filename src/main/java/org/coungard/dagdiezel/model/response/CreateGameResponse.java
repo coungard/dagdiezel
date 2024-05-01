@@ -1,2 +1,5 @@
-package org.coungard.dagdiezel.controller.model.response;public class CreateGameResponse {
+package org.coungard.dagdiezel.model.response;
+
+public class CreateGameResponse {
+
 }

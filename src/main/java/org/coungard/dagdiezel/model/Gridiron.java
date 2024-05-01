@@ -1,4 +1,4 @@
-package org.coungard.dagdiezel.entity;
+package org.coungard.dagdiezel.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,13 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-@Entity
-@Data
-public class Gridiron {
+public enum Gridiron {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
-
-
+  BELSHINA,
+  MOSCOW_01,
+  HIZROEVA
 }

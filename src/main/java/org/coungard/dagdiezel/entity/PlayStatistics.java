@@ -1,2 +1,16 @@
-package org.coungard.dagdiezel.entity;public class PlayStatistics {
+package org.coungard.dagdiezel.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
+
+@Entity
+@Data
+public class PlayStatistics {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 }

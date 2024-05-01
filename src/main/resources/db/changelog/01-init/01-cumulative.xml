@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+  <include file="2024-04-30--01-create-game-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--02-create-player-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--03-create-shirt-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--04-create-injury-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--05-create-play_statistics-table.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

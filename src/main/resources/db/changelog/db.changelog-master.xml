@@ -5,6 +5,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-  <include file="migrations/2023-01-13-initial-schema-import.xml" relativeToChangelogFile="true"/>
+  <include file="01-init/01-cumulative.xml" relativeToChangelogFile="true"/>
+  <include file="02-data/02-cumulative.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

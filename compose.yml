@@ -3,80 +3,18 @@ version: '3.7'
 services:
 
   postgres:
-    container_name: delivery_club_postgres
+    container_name: dagdiezel_postgres
     image: postgres:14.0
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: delivery_club
-      PGDATA: "/data/postgres"
+      POSTGRES_DB: dagdiezel
+      PGDATA: "/data/dagdiezel/postgres"
     volumes:
-      - postgres:/data/postgres
+      - postgres:/data/dagdiezel/postgres
     ports:
-      - "5433:5432"
+      - "5434:5432"
     restart: unless-stopped
-
-#  gateway:
-#    restart: always
-#    image: coungard/delivery-club:gateway
-#    hostname: gateway
-#    ports:
-#      - '9991:9991'
-#    environment:
-#      POSTGRES: postgres
-#      AUTH-SERVICE: auth-service
-#      EUREKA-SERVER: eureka-server
-#    links:
-#      - eureka-server
-
-  eureka-server:
-    restart: always
-    image: coungard/delivery-club:eureka-server
-    hostname: eureka-server
-    ports:
-      - '8761:8761'
-    environment:
-      POSTGRES: postgres
-      AUTH-SERVICE: auth-service
-      EUREKA-SERVER: eureka-server
-
-  auth-service:
-    restart: always
-    image: coungard/delivery-club:auth-service
-    hostname: auth-service
-    ports:
-      - '8081:8081'
-    environment:
-      POSTGRES: postgres
-      AUTH-SERVICE: auth-service
-      EUREKA-SERVER: eureka-server
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: delivery_club
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-    links:
-      - postgres
-      - eureka-server
-
-  order-service:
-    restart: always
-    image: coungard/delivery-club:order-service
-    hostname: order-service
-    ports:
-      - '8082:8082'
-    environment:
-      POSTGRES: postgres
-      AUTH-SERVICE: auth-service
-      EUREKA-SERVER: eureka-server
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: delivery_club
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-    links:
-      - postgres
-      - eureka-server
 
 volumes:
   postgres:
