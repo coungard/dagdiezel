@@ -7,7 +7,10 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class DateUtils {
 
-  public int calculateAge(LocalDate birthDate) {
+  public Integer calculateAge(LocalDate birthDate) {
+    if (birthDate == null) {
+      return null;
+    }
     return Period.between(birthDate, LocalDate.now()).getYears();
   }
 }

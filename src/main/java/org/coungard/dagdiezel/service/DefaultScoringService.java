@@ -21,15 +21,17 @@ public class DefaultScoringService implements ScoringService {
   private final PlayerRepository playerRepository;
 
   @Override
-  public void scoringMatch(List<ScoringDto> dtoScores) {
+  public void scoringMatch(long gameId, List<ScoringDto> dtoScores) {
     List<Scoring> list = new ArrayList<>();
     for (ScoringDto dto : dtoScores) {
       Scoring scoring = new Scoring();
       scoring.setGoals(dto.getGoals());
       scoring.setShirt(dto.getShirt());
+      scoring.setResult(dto.getResult());
+      scoring.setScore(dto.getScore());
 
-      Game game = gameRepository.findById(dto.getGameId())
-          .orElseThrow(() -> new RuntimeException("Game with id=" + dto.getGameId() + " does not exists"));
+      Game game = gameRepository.findById(gameId)
+          .orElseThrow(() -> new RuntimeException("Game with id=" + gameId + " does not exists"));
       Player player = playerRepository.findById(dto.getPlayerId())
           .orElseThrow(() -> new RuntimeException("Player with id=" + dto.getPlayerId() + " does not exists"));
 

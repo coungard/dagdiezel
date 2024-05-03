@@ -7,7 +7,6 @@ import org.coungard.dagdiezel.model.Shirt;
 @Data
 public class ScoringDto {
 
-  private Long gameId;
   private Long playerId;
   private MatchResult result;
   private Double score;

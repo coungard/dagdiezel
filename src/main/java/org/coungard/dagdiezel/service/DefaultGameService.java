@@ -7,6 +7,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.coungard.dagdiezel.entity.Game;
+import org.coungard.dagdiezel.model.GameDetails;
 import org.coungard.dagdiezel.model.GameType;
 import org.coungard.dagdiezel.model.Gridiron;
 import org.coungard.dagdiezel.model.request.CreateGameRequest;
@@ -30,6 +31,11 @@ public class DefaultGameService implements GameService {
     game.setTeams(request.getTeams());
 
     gameRepository.save(game);
+  }
+
+  @Override
+  public GameDetails getGameDetails(int gameId) {
+    return null;
   }
 
   @Override
