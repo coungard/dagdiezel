@@ -5,14 +5,14 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-  <changeSet author="coungard" id="2024-04-30--04-create-play_statistics-table">
+  <changeSet author="coungard" id="2024-04-30--04-create-scoring-table">
     <preConditions onFail="MARK_RAN">
       <not>
-        <tableExists tableName="play_statistics"/>
+        <tableExists tableName="scoring"/>
       </not>
     </preConditions>
     <sql>
-      CREATE TABLE play_statistics
+      CREATE TABLE scoring
       (
         id        BIGSERIAL PRIMARY KEY,
         game_id   INTEGER REFERENCES game (id),

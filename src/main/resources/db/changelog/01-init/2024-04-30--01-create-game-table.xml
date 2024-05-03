@@ -15,7 +15,7 @@
       CREATE TABLE game
       (
         id       BIGSERIAL PRIMARY KEY,
-        date     TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+        date     TIMESTAMP WITHOUT TIME ZONE UNIQUE NOT NULL,
         gridiron VARCHAR(60)  NOT NULL,
         type     VARCHAR(100) NOT NULL,
         total    VARCHAR(255) NOT NULL,

@@ -9,10 +9,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 import org.coungard.dagdiezel.model.MatchResult;
+import org.coungard.dagdiezel.model.Shirt;
 
 @Entity
 @Data
-public class PlayStatistics {
+public class Scoring {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +21,15 @@ public class PlayStatistics {
 
   @OneToOne
   private Player player;
+
   @OneToOne
   private Game game;
 
   @Enumerated(EnumType.STRING)
   private MatchResult result;
+
+  @Enumerated(EnumType.STRING)
+  private Shirt shirt;
 
   private int goals;
 

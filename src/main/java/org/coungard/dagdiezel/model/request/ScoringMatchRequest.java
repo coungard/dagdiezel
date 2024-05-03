@@ -4,7 +4,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class ScoreMatchRequest {
+public class ScoringMatchRequest {
 
-  List<ScoreRequest> scores;
+  List<ScoringDto> scoring;
 }

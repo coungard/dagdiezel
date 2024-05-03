@@ -5,7 +5,7 @@ import org.coungard.dagdiezel.model.MatchResult;
 import org.coungard.dagdiezel.model.Shirt;
 
 @Data
-public class ScoreRequest {
+public class ScoringDto {
 
   private Long gameId;
   private Long playerId;

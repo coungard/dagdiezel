@@ -3,5 +3,6 @@ package org.coungard.dagdiezel.model;
 public enum Leg {
   RIGHT,
   LEFT,
-  BOTH
+  BOTH,
+  NO_INFO
 }
