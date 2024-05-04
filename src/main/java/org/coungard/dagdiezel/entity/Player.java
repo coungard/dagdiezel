@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+import java.time.LocalDate;
 import java.util.Date;
 import lombok.Data;
 import org.coungard.dagdiezel.model.Leg;
@@ -17,7 +19,7 @@ public class Player {
   private Long id;
 
   private String name;
-  private Date birthday;
+  private LocalDate birthday;
   private String position;
   private Leg leg;
 }

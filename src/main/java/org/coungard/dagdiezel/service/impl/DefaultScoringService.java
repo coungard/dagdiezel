@@ -1,4 +1,4 @@
-package org.coungard.dagdiezel.service;
+package org.coungard.dagdiezel.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import org.coungard.dagdiezel.model.request.ScoringDto;
 import org.coungard.dagdiezel.repository.GameRepository;
 import org.coungard.dagdiezel.repository.PlayerRepository;
 import org.coungard.dagdiezel.repository.ScoringRepository;
+import org.coungard.dagdiezel.service.ScoringService;
 import org.springframework.stereotype.Service;
 
 @Service

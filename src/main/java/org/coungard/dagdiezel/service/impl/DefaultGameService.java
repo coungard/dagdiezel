@@ -1,4 +1,4 @@
-package org.coungard.dagdiezel.service;
+package org.coungard.dagdiezel.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +13,8 @@ import org.coungard.dagdiezel.model.Gridiron;
 import org.coungard.dagdiezel.model.request.CreateGameRequest;
 import org.coungard.dagdiezel.model.response.GameTypesResponse;
 import org.coungard.dagdiezel.repository.GameRepository;
+import org.coungard.dagdiezel.service.GameService;
+import org.coungard.dagdiezel.service.StatisticService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 public class DefaultGameService implements GameService {
 
   private final GameRepository gameRepository;
+  private final StatisticService statisticService;
 
   @Override
   public void createGame(CreateGameRequest request) {
@@ -34,21 +37,16 @@ public class DefaultGameService implements GameService {
   }
 
   @Override
-  public GameDetails getGameDetails(int gameId) {
-    return null;
-  }
+  public GameDetails getGameDetails(long gameId) {
+    Game game = gameRepository.findById(gameId)
+            .orElseThrow(() -> new RuntimeException("Game with id=" + gameId + " does not exists"));
 
-  @Override
-  public List<Gridiron> getGridirons() {
-    return List.of(Gridiron.values());
-  }
-
-  @Override
-  public GameTypesResponse getGameTypes() {
-    Map<String, String> types = new HashMap<>();
-    for (GameType type : GameType.values()) {
-      types.put(type.name(), type.getLocal());
-    }
-    return GameTypesResponse.builder().gameTypes(types).build();
+    return GameDetails.builder()
+            .gameType(game.getType())
+            .gridiron(game.getGridiron())
+            .total(game.getTotal())
+            .date(game.getDate())
+            .details(statisticService.getStatisticByGame(game))
+            .build();
   }
 }

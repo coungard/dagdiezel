@@ -12,9 +12,5 @@ public interface GameService {
 
   void createGame(CreateGameRequest request);
 
-  List<Gridiron> getGridirons();
-
-  GameTypesResponse getGameTypes();
-
-    GameDetails getGameDetails(int gameId);
+  GameDetails getGameDetails(long gameId);
 }

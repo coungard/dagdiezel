@@ -27,18 +27,8 @@ public class GameController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<?> getGameDetails(@PathParam("id") int gameId) {
+  public ResponseEntity<?> getGameDetails(@PathVariable("id") long gameId) {
     GameDetails gameDetails = gameService.getGameDetails(gameId);
     return ResponseEntity.ok(gameDetails);
-  }
-
-  @GetMapping("/gridirons")
-  public List<Gridiron> getGridirons() {
-    return gameService.getGridirons();
-  }
-
-  @GetMapping("/game-types")
-  public GameTypesResponse getGameTypes() {
-    return gameService.getGameTypes();
   }
 }
