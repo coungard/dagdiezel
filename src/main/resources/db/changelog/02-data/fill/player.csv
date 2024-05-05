@@ -8,7 +8,7 @@ id,name,birthday,position,leg
 7,Марат с,1984-04-14,"ЦФ",RIGHT
 8,Гаджиамин,2001-08-13,"ЦЗ",RIGHT
 9,Гамид,1983-08-22,"ЦЗ",RIGHT
-10,Курбан,null,"ЦА-В",RIGHT
+10,Курбан,1969-08-30,"ЦА-В",RIGHT
 11,Марат х,null,"ЦЗ",RIGHT
 12,Мадрид,null,"ППЗ",RIGHT
 13,Рустам,null,"АПЗ",RIGHT
@@ -20,3 +20,4 @@ id,name,birthday,position,leg
 19,Будай,null,null,null
 20,Шамиль,null,"ЦФ-ЦЗ",LEFT
 21,Ислам,null,"АПЗ",RIGHT
+22,Гитино,null,"ОПЗ",RIGHT

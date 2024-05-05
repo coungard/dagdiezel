@@ -2,6 +2,7 @@ package org.coungard.dagdiezel.mapper;
 
 import org.coungard.dagdiezel.entity.Player;
 import org.coungard.dagdiezel.model.PlayerDto;
+import org.coungard.dagdiezel.model.ShortPlayerDto;
 import org.coungard.dagdiezel.utils.DateUtils;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -21,6 +22,8 @@ public interface PlayerMapper {
     PlayerDto toPlayerDto(Player player);
 
     List<PlayerDto> toPlayerDtoList(List<Player> playerList);
+
+    List<ShortPlayerDto> toShortPlayerDtoList(List<Player> playerList);
 
     @Named("getAge")
     default Integer getAge(LocalDate birthday) {

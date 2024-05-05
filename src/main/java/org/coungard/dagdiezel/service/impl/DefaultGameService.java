@@ -37,6 +37,11 @@ public class DefaultGameService implements GameService {
   }
 
   @Override
+  public List<Game> getAllGames() {
+    return gameRepository.findAll();
+  }
+
+  @Override
   public GameDetails getGameDetails(long gameId) {
     Game game = gameRepository.findById(gameId)
             .orElseThrow(() -> new RuntimeException("Game with id=" + gameId + " does not exists"));

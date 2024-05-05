@@ -1,10 +1,6 @@
 package org.coungard.dagdiezel.service.impl;
 
 import java.util.List;
-import java.util.OptionalDouble;
-import java.util.stream.DoubleStream;
-import java.util.stream.Stream;
-
 import lombok.RequiredArgsConstructor;
 import org.coungard.dagdiezel.entity.Player;
 import org.coungard.dagdiezel.entity.Scoring;
@@ -12,10 +8,12 @@ import org.coungard.dagdiezel.mapper.PlayerMapper;
 import org.coungard.dagdiezel.model.MatchResult;
 import org.coungard.dagdiezel.model.PlayerDetails;
 import org.coungard.dagdiezel.model.PlayerDto;
+import org.coungard.dagdiezel.model.ShortPlayerDto;
 import org.coungard.dagdiezel.repository.PlayerRepository;
 import org.coungard.dagdiezel.repository.ScoringRepository;
 import org.coungard.dagdiezel.service.PlayerService;
 import org.coungard.dagdiezel.utils.DateUtils;
+import org.coungard.dagdiezel.utils.MathUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,9 +30,14 @@ public class DefaultPlayerService implements PlayerService {
   }
 
   @Override
+  public List<ShortPlayerDto> getShortPlayers() {
+    return playerMapper.toShortPlayerDtoList(playerRepository.findAll());
+  }
+
+  @Override
   public PlayerDetails getPlayerDetails(long playerId) {
     Player player = playerRepository.findById(playerId)
-            .orElseThrow(() -> new RuntimeException("Player with id=" + playerId + " does not exists"));
+        .orElseThrow(() -> new RuntimeException("Player with id=" + playerId + " does not exists"));
 
     int wins = 0;
     int loses = 0;
@@ -50,17 +53,18 @@ public class DefaultPlayerService implements PlayerService {
       }
     }
     double average = scores.stream().mapToDouble(Scoring::getScore).average().orElse(0.0d);
+    double score = MathUtils.round(average, 2);
 
     return PlayerDetails.builder()
-            .name(player.getName())
-            .age(DateUtils.calculateAge(player.getBirthday()))
-            .leg(player.getLeg())
-            .position(player.getPosition())
-            .games(wins + loses + draws)
-            .wins(wins)
-            .loses(loses)
-            .draws(draws)
-            .score(average)
-            .build();
+        .name(player.getName())
+        .age(DateUtils.calculateAge(player.getBirthday()))
+        .leg(player.getLeg())
+        .position(player.getPosition())
+        .games(wins + loses + draws)
+        .wins(wins)
+        .loses(loses)
+        .draws(draws)
+        .score(score)
+        .build();
   }
 }
