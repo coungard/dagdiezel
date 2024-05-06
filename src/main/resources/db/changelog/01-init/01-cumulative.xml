@@ -5,9 +5,10 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-  <include file="2024-04-30--01-create-game-table.xml" relativeToChangelogFile="true"/>
-  <include file="2024-04-30--02-create-player-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--01-create-games-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--02-create-players-table.xml" relativeToChangelogFile="true"/>
   <include file="2024-04-30--03-create-injury-table.xml" relativeToChangelogFile="true"/>
   <include file="2024-04-30--04-create-scoring-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-05-05--05-create-positions-table.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

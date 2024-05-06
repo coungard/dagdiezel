@@ -15,8 +15,8 @@
       CREATE TABLE injury
       (
         id        BIGSERIAL PRIMARY KEY,
-        game_id   INTEGER REFERENCES game (id),
-        player_id INTEGER REFERENCES player (id),
+        game_id   INTEGER REFERENCES games (id),
+        player_id INTEGER REFERENCES players (id),
         type      VARCHAR(60),
         reason    TEXT
       )

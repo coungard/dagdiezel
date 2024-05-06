@@ -5,11 +5,22 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-  <changeSet author="coungard" id="2024-05-01--01-add-player-data">
+  <changeSet author="coungard" id="2024-04-30--02-create-players-table">
     <preConditions onFail="MARK_RAN">
-      <tableExists tableName="player"/>
+      <not>
+        <tableExists tableName="players"/>
+      </not>
     </preConditions>
-    <loadData file="db/changelog/02-data/fill/player.csv" tableName="player"/>
+    <sql>
+      CREATE TABLE players
+      (
+        id       BIGSERIAL PRIMARY KEY,
+        name     VARCHAR(40) UNIQUE NOT NULL,
+        birthday DATE,
+        position VARCHAR(60),
+        leg      VARCHAR(20)
+      )
+    </sql>
   </changeSet>
 
 </databaseChangeLog>

@@ -5,6 +5,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-  <include file="2024-05-01--01-add-player-data.xml" relativeToChangelogFile="true"/>
+  <include file="2024-05-01--01-add-players-data.xml" relativeToChangelogFile="true"/>
+  <include file="2024-05-05--02-add-positions-data.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

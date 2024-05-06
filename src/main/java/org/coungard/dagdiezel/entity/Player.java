@@ -11,7 +11,7 @@ import lombok.Data;
 import org.coungard.dagdiezel.model.Leg;
 
 @Data
-@Entity
+@Entity(name = "players")
 public class Player {
 
   @Id

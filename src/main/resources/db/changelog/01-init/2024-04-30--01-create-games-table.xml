@@ -5,20 +5,21 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-  <changeSet author="coungard" id="2024-04-30--02-create-player-table">
+  <changeSet author="coungard" id="2024-04-30--01-create-games-table">
     <preConditions onFail="MARK_RAN">
       <not>
-        <tableExists tableName="player"/>
+        <tableExists tableName="games"/>
       </not>
     </preConditions>
     <sql>
-      CREATE TABLE player
+      CREATE TABLE games
       (
         id       BIGSERIAL PRIMARY KEY,
-        name     VARCHAR(40) UNIQUE NOT NULL,
-        birthday DATE,
-        position VARCHAR(60),
-        leg      VARCHAR(20)
+        date     TIMESTAMP WITHOUT TIME ZONE UNIQUE NOT NULL,
+        gridiron VARCHAR(60)  NOT NULL,
+        type     VARCHAR(100) NOT NULL,
+        total    VARCHAR(255) NOT NULL,
+        teams    TEXT         NOT NULL
       )
     </sql>
   </changeSet>

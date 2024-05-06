@@ -15,8 +15,8 @@
       CREATE TABLE scoring
       (
         id        BIGSERIAL PRIMARY KEY,
-        game_id   INTEGER REFERENCES game (id),
-        player_id INTEGER REFERENCES player (id),
+        game_id   INTEGER REFERENCES games (id),
+        player_id INTEGER REFERENCES players (id),
         shirt     VARCHAR(16) NOT NULL,
         goals     INTEGER     NOT NULL,
         result    VARCHAR(16) NOT NULL,

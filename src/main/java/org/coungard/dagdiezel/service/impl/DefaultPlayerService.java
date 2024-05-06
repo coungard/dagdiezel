@@ -1,20 +1,22 @@
 package org.coungard.dagdiezel.service.impl;
 
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.coungard.dagdiezel.entity.Player;
 import org.coungard.dagdiezel.entity.Scoring;
 import org.coungard.dagdiezel.mapper.PlayerMapper;
-import org.coungard.dagdiezel.model.MatchResult;
-import org.coungard.dagdiezel.model.PlayerDetails;
-import org.coungard.dagdiezel.model.PlayerDto;
-import org.coungard.dagdiezel.model.ShortPlayerDto;
+import org.coungard.dagdiezel.model.*;
 import org.coungard.dagdiezel.repository.PlayerRepository;
 import org.coungard.dagdiezel.repository.ScoringRepository;
 import org.coungard.dagdiezel.service.PlayerService;
 import org.coungard.dagdiezel.utils.DateUtils;
 import org.coungard.dagdiezel.utils.MathUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -66,5 +68,21 @@ public class DefaultPlayerService implements PlayerService {
         .draws(draws)
         .score(score)
         .build();
+  }
+
+  @Override
+  public TopPlayers getTopPlayers() {
+    List<Player> players = playerRepository.findAll();
+    Map<String, String> top = players.stream()
+            .map(player -> getPlayerDetails(player.getId()))
+            .sorted(Comparator.comparingDouble(PlayerDetails::getScore).reversed())
+            .collect(Collectors.toMap(PlayerDetails::getName,
+                    details -> "" + details.getScore() + ", игр: " + details.getGames(),
+                    (a, b) -> a,
+                    LinkedHashMap::new));
+
+    return TopPlayers.builder()
+            .top(top)
+            .build();
   }
 }
