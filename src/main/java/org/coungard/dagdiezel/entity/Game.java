@@ -11,7 +11,7 @@ import lombok.Data;
 import org.coungard.dagdiezel.model.GameType;
 import org.coungard.dagdiezel.model.Gridiron;
 
-@Entity
+@Entity(name = "games")
 @Data
 public class Game {
 
