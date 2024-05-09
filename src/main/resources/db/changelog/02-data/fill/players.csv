@@ -17,7 +17,10 @@ id;name;birthday;position;leg
 16;МагомедРасул;null;ЦФ;RIGHT
 17;МагомедШарип;null;ЛА;RIGHT
 18;Ахмед;null;ЦФ-ЦЗ;RIGHT
-19;Будай;null;null;null
+19;Будай;null;ПН;null
 20;Шамиль;null;ЦФ-ЦЗ;LEFT
 21;Ислам;null;АПЗ;RIGHT
 22;Гитино;null;ОПЗ;RIGHT
+23;Ахмед м;null;ЦПЗ;RIGHT
+24;Тагир;null;ОФ;RIGHT
+25;Ансар;null;ОПЗ;RIGHT

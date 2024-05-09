@@ -29,7 +29,8 @@
     <preConditions onFail="MARK_RAN">
       <tableExists tableName="scoring"/>
     </preConditions>
-    <addUniqueConstraint tableName="scoring" columnNames="game_id, player_id" constraintName="game_player_index"/>
+    <addUniqueConstraint tableName="scoring" columnNames="game_id, player_id"
+      constraintName="scoring_game_player_index"/>
   </changeSet>
 
 </databaseChangeLog>

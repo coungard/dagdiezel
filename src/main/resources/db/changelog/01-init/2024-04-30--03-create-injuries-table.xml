@@ -5,14 +5,14 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-  <changeSet author="coungard" id="2024-04-30--03-create-injury-table">
+  <changeSet author="coungard" id="2024-04-30--03-create-injuries-table-01">
     <preConditions onFail="MARK_RAN">
       <not>
-        <tableExists tableName="injury"/>
+        <tableExists tableName="injuries"/>
       </not>
     </preConditions>
     <sql>
-      CREATE TABLE injury
+      CREATE TABLE injuries
       (
         id        BIGSERIAL PRIMARY KEY,
         game_id   INTEGER REFERENCES games (id),
@@ -21,6 +21,14 @@
         reason    TEXT
       )
     </sql>
+  </changeSet>
+
+  <changeSet author="coungard" id="2024-04-30--03-create-injuries-table-02">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="injuries"/>
+    </preConditions>
+    <addUniqueConstraint tableName="injuries" columnNames="game_id, player_id"
+      constraintName="injuries_game_player_index"/>
   </changeSet>
 
 </databaseChangeLog>

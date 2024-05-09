@@ -15,5 +15,5 @@ public interface PlayerService {
 
   List<ShortPlayerDto> getShortPlayers();
 
-    TopPlayers getTopPlayers();
+  TopPlayers getTopPlayers();
 }

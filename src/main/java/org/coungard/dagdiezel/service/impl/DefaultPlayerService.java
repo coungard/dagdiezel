@@ -1,5 +1,6 @@
 package org.coungard.dagdiezel.service.impl;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import lombok.RequiredArgsConstructor;
 import org.coungard.dagdiezel.entity.Player;
 import org.coungard.dagdiezel.entity.Position;
@@ -83,12 +84,13 @@ public class DefaultPlayerService implements PlayerService {
 
   @Override
   public TopPlayers getTopPlayers() {
+    AtomicInteger rating = new AtomicInteger(1);
     List<Player> players = playerRepository.findAll();
     Map<String, String> top = players.stream()
             .map(player -> getPlayerDetails(player.getId()))
             .sorted(Comparator.comparingDouble(PlayerDetails::getScore).reversed())
-            .collect(Collectors.toMap(PlayerDetails::getName,
-                    details -> "" + details.getScore() + ", игр: " + details.getGames(),
+            .collect(Collectors.toMap(details ->  rating.getAndIncrement() + " - " + details.getName(),
+                    details -> details.getScore() + ", игр: " + details.getGames(),
                     (a, b) -> a,
                     LinkedHashMap::new));
 
