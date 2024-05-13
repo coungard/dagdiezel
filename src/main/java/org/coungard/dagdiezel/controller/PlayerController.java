@@ -35,6 +35,11 @@ public class PlayerController {
         return playerService.getPlayerDetails(playerId);
     }
 
+    @GetMapping("/all")
+    public List<PlayerDetails> getAllPlayersDetails() {
+        return playerService.getAllPlayerDetails();
+    }
+
     @GetMapping(value = "/top")
     public TopPlayers getTopPlayers() {
         return playerService.getTopPlayers();

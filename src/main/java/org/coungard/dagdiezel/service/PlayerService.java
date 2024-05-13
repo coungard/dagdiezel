@@ -16,4 +16,6 @@ public interface PlayerService {
   List<ShortPlayerDto> getShortPlayers();
 
   TopPlayers getTopPlayers();
+
+    List<PlayerDetails> getAllPlayerDetails();
 }

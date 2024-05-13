@@ -1,9 +1,11 @@
 package org.coungard.dagdiezel.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.coungard.dagdiezel.entity.Style;
 import org.coungard.dagdiezel.model.GameType;
 import org.coungard.dagdiezel.model.Gridiron;
 import org.coungard.dagdiezel.model.response.GameTypesResponse;
+import org.coungard.dagdiezel.service.StyleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +16,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/info")
+@RequiredArgsConstructor
 public class InfoController {
+
+    private final StyleService styleService;
 
     @GetMapping("/gridirons")
     public List<Gridiron> getGridirons() {
@@ -28,5 +33,10 @@ public class InfoController {
             types.put(type.name(), type.getLocal());
         }
         return GameTypesResponse.builder().gameTypes(types).build();
+    }
+
+    @GetMapping("/styles")
+    public List<Style> getStyles() {
+        return styleService.getStyles();
     }
 }

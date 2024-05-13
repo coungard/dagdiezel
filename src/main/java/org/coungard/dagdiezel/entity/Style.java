@@ -7,14 +7,14 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity(name = "positions")
-public class Position {
+@Entity(name = "styles")
+public class Style {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String code;
+    private String positions;
     private String description;
 }

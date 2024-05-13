@@ -3,12 +3,12 @@ package org.coungard.dagdiezel.service.impl;
 import java.util.concurrent.atomic.AtomicInteger;
 import lombok.RequiredArgsConstructor;
 import org.coungard.dagdiezel.entity.Player;
-import org.coungard.dagdiezel.entity.Position;
+import org.coungard.dagdiezel.entity.Style;
 import org.coungard.dagdiezel.entity.Scoring;
 import org.coungard.dagdiezel.mapper.PlayerMapper;
 import org.coungard.dagdiezel.model.*;
 import org.coungard.dagdiezel.repository.PlayerRepository;
-import org.coungard.dagdiezel.repository.PositionRepository;
+import org.coungard.dagdiezel.repository.StylesRepository;
 import org.coungard.dagdiezel.repository.ScoringRepository;
 import org.coungard.dagdiezel.service.PlayerService;
 import org.coungard.dagdiezel.utils.DateUtils;
@@ -27,7 +27,7 @@ public class DefaultPlayerService implements PlayerService {
 
   private final PlayerRepository playerRepository;
   private final ScoringRepository scoringRepository;
-  private final PositionRepository positionRepository;
+  private final StylesRepository stylesRepository;
   private final PlayerMapper playerMapper = PlayerMapper.INSTANCE;
 
   @Override
@@ -41,18 +41,25 @@ public class DefaultPlayerService implements PlayerService {
   }
 
   @Override
+  public List<PlayerDetails> getAllPlayerDetails() {
+    return playerRepository.findAll().stream()
+            .map(Player::getId)
+            .map(this::getPlayerDetails)
+            .collect(Collectors.toList());
+  }
+
+  @Override
   public PlayerDetails getPlayerDetails(long playerId) {
     Player player = playerRepository.findById(playerId)
         .orElseThrow(() -> new RuntimeException("Player with id=" + playerId + " does not exists"));
 
     String role = null;
-    List<Position> positions = positionRepository.findAll();
-    for (Position position : positions) {
-      if (player.getPosition().equals(position.getCode())) {
-        role = position.getName().toUpperCase() + ". " + position.getDescription();
+    List<Style> styles = stylesRepository.findAll();
+    for (Style style : styles) {
+      if (player.getPosition().equals(style.getPositions())) {
+        role = style.getName().toUpperCase() + ". " + style.getDescription();
       }
     }
-
     int wins = 0;
     int loses = 0;
     int draws = 0;
