@@ -5,13 +5,13 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-    <changeSet author="coungard" id="2024-05-01--01-add-players-data">
+    <changeSet author="coungard" id="2024-05-05--01-add-styles-data">
         <preConditions onFail="MARK_RAN">
-            <tableExists tableName="players"/>
+            <tableExists tableName="styles"/>
         </preConditions>
         <loadData
-                file="db/changelog/02-data/fill/players.csv"
-                tableName="players"
+                file="db/changelog/02-data/fill/styles.csv"
+                tableName="styles"
                 separator=";"/>
     </changeSet>
 

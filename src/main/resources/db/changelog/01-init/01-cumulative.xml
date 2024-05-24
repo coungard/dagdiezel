@@ -6,9 +6,10 @@
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
   <include file="2024-04-30--01-create-games-table.xml" relativeToChangelogFile="true"/>
-  <include file="2024-04-30--02-create-players-table.xml" relativeToChangelogFile="true"/>
-  <include file="2024-04-30--03-create-injuries-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--02-create-styles-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--03-create-players-table.xml" relativeToChangelogFile="true"/>
   <include file="2024-04-30--04-create-scoring-table.xml" relativeToChangelogFile="true"/>
-  <include file="2024-05-05--05-create-styles-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-04-30--05-create-injuries-table.xml" relativeToChangelogFile="true"/>
+  <include file="2024-05-25--06-create-talents-table.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

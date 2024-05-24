@@ -14,9 +14,12 @@ public class PlayerDetails {
     private Leg leg;
     @JsonInclude(Include.NON_NULL)
     private Integer age;
-    private String position;
-    @JsonInclude(Include.NON_EMPTY)
-    private String role;
+    private String style;
+    @JsonInclude(Include.NON_NULL)
+    private String talent;
+    @JsonInclude(Include.NON_NULL)
+    private String injury;
+    @JsonInclude(value = Include.CUSTOM, valueFilter = NonZeroesIncluded.class)
     private int games;
     @JsonInclude(value = Include.CUSTOM, valueFilter = NonZeroesIncluded.class)
     private int wins;
@@ -24,5 +27,8 @@ public class PlayerDetails {
     private int loses;
     @JsonInclude(value = Include.CUSTOM, valueFilter = NonZeroesIncluded.class)
     private int draws;
+    @JsonInclude(value = Include.CUSTOM, valueFilter = NonZeroesIncluded.class)
+    private int goals;
+    @JsonInclude(value = Include.CUSTOM, valueFilter = NonZeroesIncluded.class)
     private double score;
 }

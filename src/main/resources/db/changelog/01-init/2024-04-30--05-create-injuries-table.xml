@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-  <changeSet author="coungard" id="2024-04-30--03-create-injuries-table-01">
+  <changeSet author="coungard" id="2024-04-30--05-create-injuries-table-01">
     <preConditions onFail="MARK_RAN">
       <not>
         <tableExists tableName="injuries"/>
@@ -23,7 +23,7 @@
     </sql>
   </changeSet>
 
-  <changeSet author="coungard" id="2024-04-30--03-create-injuries-table-02">
+  <changeSet author="coungard" id="2024-04-30--05-create-injuries-table-02">
     <preConditions onFail="MARK_RAN">
       <tableExists tableName="injuries"/>
     </preConditions>

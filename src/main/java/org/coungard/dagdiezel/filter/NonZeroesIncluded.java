@@ -7,6 +7,6 @@ public class NonZeroesIncluded {
         if (other == null) {
             return false;
         }
-        return Integer.parseInt(String.valueOf(other)) == 0;
+        return Double.parseDouble(String.valueOf(other)) == 0;
     }
 }
