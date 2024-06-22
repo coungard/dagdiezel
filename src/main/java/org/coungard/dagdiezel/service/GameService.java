@@ -15,5 +15,7 @@ public interface GameService {
 
   GameDetails getGameDetails(long gameId);
 
+  List<GameDetails> getAllDetailedGames();
+
   List<Game> getAllGames();
 }

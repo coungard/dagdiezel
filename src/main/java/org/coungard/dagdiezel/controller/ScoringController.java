@@ -22,4 +22,10 @@ public class ScoringController {
     scoringService.scoringMatch(gameId, scores);
     return new ResponseEntity<>("Scores saved successfully.", HttpStatus.OK);
   }
+
+  @GetMapping("/average")
+  public ResponseEntity<?> checkAverageScoring() {
+    Double average = scoringService.checkAverageScoring();
+    return ResponseEntity.ok(average);
+  }
 }

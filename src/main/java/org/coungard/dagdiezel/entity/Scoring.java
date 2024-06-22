@@ -10,13 +10,16 @@ import jakarta.persistence.OneToOne;
 import lombok.Data;
 import org.coungard.dagdiezel.model.MatchResult;
 import org.coungard.dagdiezel.model.Shirt;
+import org.coungard.dagdiezel.tools.sequence.IncrementByMaxIdGenerator;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Data
 public class Scoring {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "scoring_seq")
+  @GenericGenerator(name = "scoring_seq", type = IncrementByMaxIdGenerator.class)
   private Long id;
 
   @OneToOne

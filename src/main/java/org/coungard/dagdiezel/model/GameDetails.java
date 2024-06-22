@@ -14,4 +14,5 @@ public class GameDetails {
     private String total;
     private LocalDateTime date;
     private String details;
+    private Double totalRanked;
 }

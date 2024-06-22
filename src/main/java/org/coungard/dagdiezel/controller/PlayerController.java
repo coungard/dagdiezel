@@ -9,6 +9,7 @@ import org.coungard.dagdiezel.service.PlayerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -41,7 +42,8 @@ public class PlayerController {
     }
 
     @GetMapping(value = "/top")
-    public TopPlayers getTopPlayers() {
-        return playerService.getTopPlayers();
+    public TopPlayers getTopPlayers(@RequestParam(value = "minimumGames", required = false, defaultValue = "0") Integer minimumGames,
+        @RequestParam(value = "sortBy", required = false) String sortBy) {
+        return playerService.getTopPlayers(minimumGames, sortBy);
     }
 }

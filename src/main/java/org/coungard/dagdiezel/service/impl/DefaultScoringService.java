@@ -42,4 +42,9 @@ public class DefaultScoringService implements ScoringService {
     }
     scoringRepository.saveAll(list);
   }
+
+  @Override
+  public Double checkAverageScoring() {
+    return null; // TODO
+  }
 }

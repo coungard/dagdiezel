@@ -91,15 +91,15 @@ public class DefaultPlayerService implements PlayerService {
   }
 
   @Override
-  public TopPlayers getTopPlayers() {
+  public TopPlayers getTopPlayers(Integer minimumGames, String sortBy) {
     AtomicInteger rating = new AtomicInteger(1);
     List<Player> players = playerRepository.findAll();
     Map<String, String> top = players.stream()
         .map(player -> getPlayerDetails(player.getId()))
-        .filter(details -> details.getGames() > 0)
+        .filter(details -> details.getGames() >= minimumGames)
         .sorted(Comparator.comparingDouble(PlayerDetails::getScore).reversed())
         .collect(Collectors.toMap(details -> rating.getAndIncrement() + " - " + details.getName(),
-            details -> details.getScore() + ", игр: " + details.getGames(),
+            details -> details.getScore() + ", игр: " + details.getGames() + ", голов: " + details.getGoals(),
             (a, b) -> a,
             LinkedHashMap::new));
 

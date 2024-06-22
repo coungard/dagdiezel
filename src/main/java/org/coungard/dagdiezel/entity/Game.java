@@ -10,13 +10,16 @@ import java.time.LocalDateTime;
 import lombok.Data;
 import org.coungard.dagdiezel.model.GameType;
 import org.coungard.dagdiezel.model.Gridiron;
+import org.coungard.dagdiezel.tools.sequence.IncrementByMaxIdGenerator;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity(name = "games")
 @Data
 public class Game {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "games_seq")
+  @GenericGenerator(name = "games_seq", type = IncrementByMaxIdGenerator.class)
   private Long id;
 
   @Enumerated(EnumType.STRING)

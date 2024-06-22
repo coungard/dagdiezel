@@ -38,4 +38,9 @@ public class GameController {
     GameDetails gameDetails = gameService.getGameDetails(gameId);
     return ResponseEntity.ok(gameDetails);
   }
+
+  @GetMapping("/detailed/all")
+  public List<GameDetails> getAllGameDetails() {
+    return gameService.getAllDetailedGames();
+  }
 }

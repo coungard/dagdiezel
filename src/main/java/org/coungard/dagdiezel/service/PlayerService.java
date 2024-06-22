@@ -1,7 +1,6 @@
 package org.coungard.dagdiezel.service;
 
 import java.util.List;
-
 import org.coungard.dagdiezel.model.PlayerDetails;
 import org.coungard.dagdiezel.model.PlayerDto;
 import org.coungard.dagdiezel.model.ShortPlayerDto;
@@ -15,7 +14,7 @@ public interface PlayerService {
 
   List<ShortPlayerDto> getShortPlayers();
 
-  TopPlayers getTopPlayers();
+  TopPlayers getTopPlayers(Integer gamesCount, String sortBy);
 
-    List<PlayerDetails> getAllPlayerDetails();
+  List<PlayerDetails> getAllPlayerDetails();
 }
