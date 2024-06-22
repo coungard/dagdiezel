@@ -1,6 +1,9 @@
 package org.coungard.dagdiezel.service;
 
 import java.util.List;
+
+import org.coungard.dagdiezel.entity.Game;
+import org.coungard.dagdiezel.model.GameDetails;
 import org.coungard.dagdiezel.model.GameType;
 import org.coungard.dagdiezel.model.Gridiron;
 import org.coungard.dagdiezel.model.request.CreateGameRequest;
@@ -10,7 +13,9 @@ public interface GameService {
 
   void createGame(CreateGameRequest request);
 
-  List<Gridiron> getGridirons();
+  GameDetails getGameDetails(long gameId);
 
-  GameTypesResponse getGameTypes();
+  List<GameDetails> getAllDetailedGames();
+
+  List<Game> getAllGames();
 }

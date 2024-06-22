@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet author="coungard" id="2024-05-05--02-create-styles-table">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="styles"/>
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE styles
+            (
+                id          BIGSERIAL PRIMARY KEY,
+                name        VARCHAR(60) UNIQUE NOT NULL,
+                positions   VARCHAR(32)        NOT NULL,
+                description VARCHAR(256)       NOT NULL
+            )
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -5,24 +5,32 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-  <changeSet author="coungard" id="2024-04-30--05-create-play_statistics-table">
+  <changeSet author="coungard" id="2024-04-30--04-create-scoring-table-01">
     <preConditions onFail="MARK_RAN">
       <not>
-        <tableExists tableName="play_statistics"/>
+        <tableExists tableName="scoring"/>
       </not>
     </preConditions>
     <sql>
-      CREATE TABLE play_statistics
+      CREATE TABLE scoring
       (
         id        BIGSERIAL PRIMARY KEY,
-        game_id   INTEGER REFERENCES game (id),
-        player_id INTEGER REFERENCES player (id),
-        shirt_id  INTEGER REFERENCES shirt (id),
+        game_id   INTEGER REFERENCES games (id),
+        player_id INTEGER REFERENCES players (id),
+        shirt     VARCHAR(16) NOT NULL,
         goals     INTEGER     NOT NULL,
         result    VARCHAR(16) NOT NULL,
         score     REAL        NOT NULL
       )
     </sql>
+  </changeSet>
+
+  <changeSet author="coungard" id="2024-04-30--04-create-scoring-table-02">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="scoring"/>
+    </preConditions>
+    <addUniqueConstraint tableName="scoring" columnNames="game_id, player_id"
+      constraintName="scoring_game_player_index"/>
   </changeSet>
 
 </databaseChangeLog>

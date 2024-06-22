@@ -6,28 +6,35 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.time.LocalDateTime;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
-import org.coungard.dagdiezel.model.GameType;
-import org.coungard.dagdiezel.model.Gridiron;
+import org.coungard.dagdiezel.model.MatchResult;
+import org.coungard.dagdiezel.model.Shirt;
 import org.coungard.dagdiezel.tools.sequence.IncrementByMaxIdGenerator;
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity(name = "games")
+@Entity
 @Data
-public class Game {
+public class Scoring {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "games_seq")
-  @GenericGenerator(name = "games_seq", type = IncrementByMaxIdGenerator.class)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "scoring_seq")
+  @GenericGenerator(name = "scoring_seq", type = IncrementByMaxIdGenerator.class)
   private Long id;
 
-  @Enumerated(EnumType.STRING)
-  private GameType type;
-  @Enumerated(EnumType.STRING)
-  private Gridiron gridiron;
+  @OneToOne
+  private Player player;
 
-  private LocalDateTime date;
-  private String total;
-  private String teams;
+  @OneToOne
+  private Game game;
+
+  @Enumerated(EnumType.STRING)
+  private MatchResult result;
+
+  @Enumerated(EnumType.STRING)
+  private Shirt shirt;
+
+  private int goals;
+
+  private double score;
 }
