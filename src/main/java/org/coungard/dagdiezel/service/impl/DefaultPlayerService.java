@@ -72,8 +72,10 @@ public class DefaultPlayerService implements PlayerService {
       }
       goals += scoring.getGoals();
     }
-    double average = scores.stream().mapToDouble(Scoring::getScore).average().orElse(0.0d);
-    double score = MathUtils.round(average, 2);
+    double averageScore = scores.stream().mapToDouble(Scoring::getScore).average().orElse(0.0d);
+    double averageGoals = scores.stream().mapToDouble(Scoring::getGoals).average().orElse(0.0d);
+    double score = MathUtils.round(averageScore, 2);
+    double xGoals = MathUtils.round(averageGoals, 2);
 
     return PlayerDetails.builder()
         .name(player.getName())
@@ -87,6 +89,7 @@ public class DefaultPlayerService implements PlayerService {
         .draws(draws)
         .goals(goals)
         .score(score)
+            .xGoals(xGoals)
         .build();
   }
 
@@ -97,9 +100,9 @@ public class DefaultPlayerService implements PlayerService {
     Map<String, String> top = players.stream()
         .map(player -> getPlayerDetails(player.getId()))
         .filter(details -> details.getGames() >= minimumGames)
-        .sorted(Comparator.comparingDouble(PlayerDetails::getScore).reversed())
+        .sorted(defineComparator(sortBy))
         .collect(Collectors.toMap(details -> rating.getAndIncrement() + " - " + details.getName(),
-            details -> details.getScore() + ", игр: " + details.getGames() + ", голов: " + details.getGoals(),
+                DescriptionUtils::describePlayerDetails,
             (a, b) -> a,
             LinkedHashMap::new));
 
@@ -107,4 +110,14 @@ public class DefaultPlayerService implements PlayerService {
         .top(top)
         .build();
   }
+
+  private Comparator<? super PlayerDetails> defineComparator(String sortBy) {
+      return switch (sortBy) {
+          case "xG" -> Comparator.comparingDouble(PlayerDetails::getXGoals).reversed();
+          case "goals" -> Comparator.comparingDouble(PlayerDetails::getGoals).reversed();
+          default -> Comparator.comparingDouble(PlayerDetails::getScore).reversed();
+      };
+  }
+
+
 }

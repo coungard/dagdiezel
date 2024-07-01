@@ -43,7 +43,7 @@ public class PlayerController {
 
     @GetMapping(value = "/top")
     public TopPlayers getTopPlayers(@RequestParam(value = "minimumGames", required = false, defaultValue = "0") Integer minimumGames,
-        @RequestParam(value = "sortBy", required = false) String sortBy) {
+        @RequestParam(value = "sortBy", required = false, defaultValue = "score") String sortBy) {
         return playerService.getTopPlayers(minimumGames, sortBy);
     }
 }
