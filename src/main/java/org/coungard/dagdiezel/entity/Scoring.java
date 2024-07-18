@@ -13,7 +13,7 @@ import org.coungard.dagdiezel.model.Shirt;
 import org.coungard.dagdiezel.tools.sequence.IncrementByMaxIdGenerator;
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity
+@Entity(name = "scoring")
 @Data
 public class Scoring {
 

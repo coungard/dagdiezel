@@ -67,6 +67,6 @@ public class DefaultGameService implements GameService {
     return scoring.stream()
         .map(Scoring::getScore)
         .reduce(Double::sum)
-        .orElseThrow(() -> new RuntimeException("Error while getting total score"));
+        .orElse(0.0);
   }
 }

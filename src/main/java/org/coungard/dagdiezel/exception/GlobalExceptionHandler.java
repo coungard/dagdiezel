@@ -19,4 +19,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
   }
 
+  @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+  @ExceptionHandler(ScoringException.class)
+  public ResponseEntity<String> handleScoringException(ScoringException ex) {
+    return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(ex.getMessage());
+  }
 }

@@ -31,4 +31,6 @@ public class PlayerDetails {
     private int goals;
     @JsonInclude(value = Include.CUSTOM, valueFilter = NonZeroesIncluded.class)
     private double score;
+    @JsonInclude(value = Include.CUSTOM, valueFilter = NonZeroesIncluded.class)
+    private double xGoals;
 }
