@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.coungard.dagdiezel.entity.Game;
 import org.coungard.dagdiezel.entity.Player;
 import org.coungard.dagdiezel.entity.Scoring;
+import org.coungard.dagdiezel.exception.ScoringException;
 import org.coungard.dagdiezel.model.request.ScoringDto;
 import org.coungard.dagdiezel.repository.GameRepository;
 import org.coungard.dagdiezel.repository.PlayerRepository;
@@ -32,9 +33,9 @@ public class DefaultScoringService implements ScoringService {
       scoring.setScore(dto.getScore());
 
       Game game = gameRepository.findById(gameId)
-          .orElseThrow(() -> new RuntimeException("Game with id=" + gameId + " does not exists"));
+          .orElseThrow(() -> new ScoringException("Game with id=" + gameId + " does not exists"));
       Player player = playerRepository.findById(dto.getPlayerId())
-          .orElseThrow(() -> new RuntimeException("Player with id=" + dto.getPlayerId() + " does not exists"));
+          .orElseThrow(() -> new ScoringException("Player with id=" + dto.getPlayerId() + " does not exists"));
 
       scoring.setGame(game);
       scoring.setPlayer(player);

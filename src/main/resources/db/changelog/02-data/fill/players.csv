@@ -29,3 +29,6 @@ id;name;birthday;position;leg;style_id
 28;Салах;null;ОПЗ;LEFT;3
 29;Расул19;null;АПЗ;RIGHT;8
 30;Насреддин;null;ЦПЗ;RIGHT;2
+31;Замир;null;АПЗ;RIGHT;8
+32;Амир;null;ОПЗ;RIGHT;16
+33;Алим;1988-08-24;ЦЗ;RIGHT;1
