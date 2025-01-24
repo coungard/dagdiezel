@@ -2,10 +2,12 @@ package org.coungard.dagdiezel.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.coungard.dagdiezel.entity.Game;
+import org.coungard.dagdiezel.entity.OwnGoals;
 import org.coungard.dagdiezel.entity.Player;
 import org.coungard.dagdiezel.entity.Scoring;
 import org.coungard.dagdiezel.model.GameType;
 import org.coungard.dagdiezel.model.Shirt;
+import org.coungard.dagdiezel.repository.OwnGoalsRepository;
 import org.coungard.dagdiezel.repository.ScoringRepository;
 import org.coungard.dagdiezel.service.StatisticService;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ import static org.coungard.dagdiezel.model.Shirt.RED;
 public class DefaultStatisticService implements StatisticService {
 
     private final ScoringRepository scoringRepository;
+    private final OwnGoalsRepository ownGoalsRepository;
 
     private static final String DETAILS_TEMPLATE = """
 
@@ -28,6 +31,7 @@ public class DefaultStatisticService implements StatisticService {
             Команда синих:
             %s
 
+            %s
             """;
 
     @Override
@@ -47,6 +51,11 @@ public class DefaultStatisticService implements StatisticService {
                     .append(", голы = ").append(scoring.getGoals())
                     .append(", балл = ").append(scoring.getScore()).append("\n");
         }
-        return String.format(DETAILS_TEMPLATE, redTeam, blueTeam);
+        OwnGoals ownGoals = ownGoalsRepository.findOwnGoalsByGameId(game.getId()).orElse(null);
+        String ownGoalsDetails = "";
+        if (ownGoals != null) {
+            ownGoalsDetails = "Автогол: " + ownGoals.getPlayer().getName();
+        }
+        return String.format(DETAILS_TEMPLATE, redTeam, blueTeam, ownGoalsDetails);
     }
 }

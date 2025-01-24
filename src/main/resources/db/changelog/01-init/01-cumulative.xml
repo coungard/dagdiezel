@@ -11,5 +11,6 @@
   <include file="2024-04-30--04-create-scoring-table.xml" relativeToChangelogFile="true"/>
   <include file="2024-04-30--05-create-injuries-table.xml" relativeToChangelogFile="true"/>
   <include file="2024-05-25--06-create-talents-table.xml" relativeToChangelogFile="true"/>
+  <include file="2025-01-02--07-create-own_goals-table.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

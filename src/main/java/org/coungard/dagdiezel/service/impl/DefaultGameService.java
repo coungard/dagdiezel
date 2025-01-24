@@ -22,7 +22,7 @@ public class DefaultGameService implements GameService {
   private final ScoringRepository scoringRepository;
 
   @Override
-  public void createGame(CreateGameRequest request) {
+  public Long createGame(CreateGameRequest request) {
     Game game = new Game();
     game.setDate(request.getDate());
     game.setType(request.getType());
@@ -30,7 +30,8 @@ public class DefaultGameService implements GameService {
     game.setTotal(request.getTotal());
     game.setTeams(request.getTeams());
 
-    gameRepository.save(game);
+    Game saved = gameRepository.save(game);
+    return saved.getId();
   }
 
   @Override

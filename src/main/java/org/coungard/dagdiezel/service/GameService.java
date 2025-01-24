@@ -11,7 +11,7 @@ import org.coungard.dagdiezel.model.response.GameTypesResponse;
 
 public interface GameService {
 
-  void createGame(CreateGameRequest request);
+  Long createGame(CreateGameRequest request);
 
   GameDetails getGameDetails(long gameId);
 

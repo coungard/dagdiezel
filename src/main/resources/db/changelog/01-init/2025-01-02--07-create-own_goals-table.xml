@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+  <changeSet author="coungard" id="2025-01-02--07-create-own_goals-table-01">
+    <preConditions onFail="MARK_RAN">
+      <not>
+        <tableExists tableName="own_goals"/>
+      </not>
+    </preConditions>
+    <sql>
+      CREATE TABLE own_goals
+      (
+        id        BIGSERIAL PRIMARY KEY,
+        game_id   INTEGER REFERENCES games (id),
+        player_id INTEGER REFERENCES players (id)
+      )
+    </sql>
+  </changeSet>
+
+  <changeSet author="coungard" id="2025-01-02--07-create-own_goals-table-02">
+    <preConditions onFail="MARK_RAN">
+      <tableExists tableName="own_goals"/>
+    </preConditions>
+    <addUniqueConstraint tableName="own_goals" columnNames="game_id, player_id"
+      constraintName="own_goals_game_player_index"/>
+  </changeSet>
+
+</databaseChangeLog>

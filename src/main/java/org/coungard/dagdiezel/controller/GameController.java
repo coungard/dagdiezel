@@ -24,8 +24,8 @@ public class GameController {
 
   @PostMapping
   public ResponseEntity<?> createGame(@RequestBody @Validated CreateGameRequest request) {
-    gameService.createGame(request);
-    return ResponseEntity.ok().build();
+    Long gameId = gameService.createGame(request);
+    return ResponseEntity.ok(gameId);
   }
 
   @GetMapping
